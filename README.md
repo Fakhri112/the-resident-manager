@@ -28,7 +28,7 @@ Mini projek manajemen iuran bulanan untuk warga perumahan
     php artisan serve
 ```
 ### Front End
-- Masuk ke folder backend
+- Masuk ke folder frontend
 - Pastikan TypeScript sudah terinstall global
 ```
     npm install -g typescript
