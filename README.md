@@ -25,6 +25,7 @@ Mini projek manajemen iuran bulanan untuk warga perumahan
     php artisan key:generate
     php artisan migrate
     php artisan storage:link
+    php artisan serve
 ```
 ### Front End
 - Masuk ke folder backend
