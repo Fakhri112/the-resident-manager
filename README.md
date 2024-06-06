@@ -8,7 +8,7 @@ Mini projek manajemen iuran bulanan untuk warga perumahan
 - DaisyUI
 
 ## Petunjuk Instalasi
-### Backend
+### Back End
 - Masuk ke folder backend
 - Pastikan konfigurasi DB di .env sudah diset
 ```
