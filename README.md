@@ -19,7 +19,7 @@ Mini projek manajemen iuran bulanan untuk warga perumahan
     DB_USERNAME=root
     DB_PASSWORD=
 ```
-- Ketikan command Berikut
+- Ketikkan command berikut
 ```
     composer install
     php artisan key:generate
@@ -33,7 +33,7 @@ Mini projek manajemen iuran bulanan untuk warga perumahan
 ```
     npm install -g typescript
 ```
-- Ketikan command Berikut
+- Ketikkan command berikut
 ```
     npm install
     npm run dev
