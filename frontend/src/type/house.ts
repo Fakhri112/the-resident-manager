@@ -48,9 +48,23 @@ interface IResident {
 	updated_at: string;
 }
 
+interface IEditBill {
+	numberIncrement: number;
+	satpam: number;
+	kebersihan: number;
+	initialPrice: string;
+}
+
 interface IChoosedResident {
 	id: number;
 	full_name: string;
 }
 
-export type { IChoosedResident, IResident, IHouse, IHouseModal, IPayment };
+export type {
+	IEditBill,
+	IChoosedResident,
+	IResident,
+	IHouse,
+	IHouseModal,
+	IPayment,
+};

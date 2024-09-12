@@ -99,7 +99,7 @@ const AddHouse = forwardRef<HTMLFormElement, IAddHouse>(
 										name="occupancy_status"
 										id="Occupied"
 										value="Occupied"
-										onChange={(e) => passPropOccupy(true)}
+										onChange={() => passPropOccupy(true)}
 									/>
 									<label
 										htmlFor="Occupied"
@@ -116,7 +116,7 @@ const AddHouse = forwardRef<HTMLFormElement, IAddHouse>(
 										name="occupancy_status"
 										id="Unoccupied"
 										value="Unoccupied"
-										onChange={(e) => passPropOccupy(false)}
+										onChange={() => passPropOccupy(false)}
 									/>
 									<label
 										htmlFor="Unoccupied"

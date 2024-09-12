@@ -22,6 +22,7 @@ Route::post('/house/{id}', [HouseController::class, 'update']);
 Route::delete('/house/{id}', [HouseController::class, 'destroy']);
 
 Route::post('/sendbill', [PaymentController::class, 'sendBill']);
+Route::patch('/editpayment', [PaymentController::class, 'editPayment']);
 Route::post('/paidoff/{id}', [PaymentController::class, 'paidOff']);
 Route::post('/expense', [PaymentController::class, 'expense']);
 Route::get('/report', [PaymentController::class, 'report']);

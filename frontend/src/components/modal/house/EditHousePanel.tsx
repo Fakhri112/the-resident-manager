@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, forwardRef } from "react";
+import { SyntheticEvent, forwardRef } from "react";
 import { IChoosedResident, IHouse } from "../../../type/house";
 
 interface IEditHousePanel {
@@ -34,7 +34,7 @@ const EditHousePanel = forwardRef<HTMLFormElement, IEditHousePanel>(
 			<form
 				ref={ref}
 				onSubmit={handleUpdateData}
-				className={`overflow-y-auto flex w-full h-full  justify-between flex-col items-center ${
+				className={`overflow-y-auto flex w-full h-full justify-between flex-col items-center ${
 					!viewReportList ? "" : "hidden"
 				}`}>
 				<div className="flex flex-col w-full">

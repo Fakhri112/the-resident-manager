@@ -1,5 +1,4 @@
 const options = {
-	// maintainAspectRatio: false,
 	responsive: true,
 	maintainAspectRatio: false,
 	plugins: {

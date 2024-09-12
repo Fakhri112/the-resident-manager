@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, forwardRef } from "react";
+import { SyntheticEvent, forwardRef } from "react";
 import ReactModal from "react-modal";
 import { IChoosedResident, IHouseModal, IHouse } from "../../../type/house";
 import { Spinner } from "../../Spinner";
@@ -8,6 +8,11 @@ import PaymentHistory from "./PaymentHistory";
 interface IEditHouse {
 	modal: IHouseModal;
 	handleCloseModal: () => void;
+	handleUpdateBill: (
+		ids: number[],
+		prices: [number, number],
+		new_bill_date: string,
+	) => void;
 	handleUpdateData: (e: SyntheticEvent) => void;
 	handleOpenResidentList: (e: SyntheticEvent) => void;
 	handlePaidOff: (ids: number[]) => void;
@@ -30,6 +35,7 @@ const EditHouse = forwardRef<HTMLFormElement, IEditHouse>(
 			handleOpenResidentList,
 			handleUpdateData,
 			handlePaidOff,
+			handleUpdateBill,
 			selectedData,
 			choosedResident,
 			passPropOccupy,
@@ -97,6 +103,7 @@ const EditHouse = forwardRef<HTMLFormElement, IEditHouse>(
 					viewReportList={viewReportList}
 					selectedData={selectedData}
 					handlePaidOff={handlePaidOff}
+					handleUpdateBill={handleUpdateBill}
 				/>
 			</ReactModal>
 		);

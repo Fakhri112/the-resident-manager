@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import SidebarMenu from "../components/SidebarMenu";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -59,6 +59,13 @@ const House = () => {
 		fetchData();
 	}, [viewOccupiedList]);
 
+	const toggleViewOccupiedHouse = (bool: boolean) => {
+		if (bool && viewOccupiedList) return;
+		if (!bool && !viewOccupiedList) return;
+		SetViewOccupiedList(bool);
+		SetHouseData([]);
+	};
+
 	const handleCloseModal = () => {
 		SetChoosedResident(initialChoosedResidentData);
 		SetViewReportList(false);
@@ -77,13 +84,6 @@ const House = () => {
 			id: id,
 		});
 		SetModal({ ...modal, residentList: !modal.residentList });
-	};
-
-	const toggleViewOccupiedHouse = (bool: boolean) => {
-		if (bool && viewOccupiedList) return;
-		if (!bool && !viewOccupiedList) return;
-		SetViewOccupiedList(bool);
-		SetHouseData([]);
 	};
 
 	const handleUpdateData = (e: SyntheticEvent) => {
@@ -193,6 +193,30 @@ const House = () => {
 			});
 	};
 
+	const handleUpdateBill = (
+		ids: number[],
+		bills: [number, number],
+		new_bill_date: string,
+	) => {
+		SetSubmitting(true);
+		axios
+			.patch("http://localhost:8000/api/editpayment", {
+				ids,
+				bills,
+				new_bill_date,
+			})
+			.then((res) => {
+				SetSubmitting(false);
+				toast.success(res.data.message as string);
+				handleCloseModal();
+				fetchData();
+			})
+			.catch(() => {
+				SetSubmitting(false);
+				toast.error("Terdapat Error 🥴");
+			});
+	};
+
 	return (
 		<>
 			<Toaster />
@@ -215,6 +239,7 @@ const House = () => {
 				handleOpenResidentList={handleOpenResidentList}
 				handlePaidOff={handlePaidOff}
 				handleUpdateData={handleUpdateData}
+				handleUpdateBill={handleUpdateBill}
 				selectedData={selectedData as IHouse}
 				choosedResident={choosedResident}
 				viewReportList={viewReportList}

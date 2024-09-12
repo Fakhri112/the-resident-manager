@@ -51,6 +51,7 @@ class HouseController extends Controller
         foreach ($payment as $key => $valuePayment) {
             $indexSearch = array_search($valuePayment->house_id, array_column($houses, 'house_id'));
             $finishReplace = false;
+            error_log(count($houses[$indexSearch]['payment']));
             foreach ($houses[$indexSearch]['payment'] as $key => $valueHouse) {
                 if ($valuePayment['start_bill_date'] == $valueHouse['start_bill_date']) {
                     $houses[$indexSearch]['payment'][$key]['amount_paid'] = (int) $houses[$indexSearch]['payment'][$key]['amount_paid'] + (int) $valuePayment['amount_paid'];

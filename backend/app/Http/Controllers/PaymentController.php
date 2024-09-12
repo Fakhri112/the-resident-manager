@@ -80,6 +80,7 @@ class PaymentController extends Controller
             ], 422);
         }
     }
+
     public function paidOff(Request $request, $id)
     {
         $payment = Payment::find($id);
@@ -96,6 +97,29 @@ class PaymentController extends Controller
             'status' => 200,
             'message' => 'Berhasil! Penghuni ini sudah lunas iuran ' . $payment->description .  ' 😍',
         ]);
+    }
+
+    public function editPayment(Request $request)
+    {
+            $request->validate([
+                'new_bill_date' => 'required|string|max:255',
+                'bills' => 'required',
+                'ids' => 'required',
+            ]);
+
+            foreach ($request->input('ids') as $key => $amount) {     
+            $payment = Payment::find($amount);
+            $payment->update([
+                'new_bill_date' => $request->input("new_bill_date"),
+                'amount_paid' => $request->input('bills')[$key],
+                'updated_at' => Carbon::now()
+            ]);}
+
+             return response()->json([
+                'status' => 200,
+                'message' => 'Berhasil mengubah periode iuran ✨',
+            ]);
+
     }
 
     public function expense(Request $request)
@@ -130,10 +154,6 @@ class PaymentController extends Controller
 
         $totalReport =
             array_merge($expense, $income);
-
-        // $createdAts = array_column($totalReport, 'created_at');
-        // array_multisort($totalReport, SORT_ASC, $createdAts, SORT_STRING);
-
         
         foreach ($totalReport as $key => $valueReport) {
             if (array_key_exists('expense_date', $totalReport[$key])){
